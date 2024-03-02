@@ -1,31 +1,57 @@
-<h1> Список покупок </h1>
+<h1>Träningsapparat</h1>
 <div>
-    <p>
-        <label>Товар</label><br>
-        <input [(ngModel)]="text" />
-    </p>
-    <p>
-        <label>Цена</label><br>
-        <input type="number" [(ngModel)]="price" />
-    </p>
-    <button (click)="addItem(text, price)">Добавить</button>
+    <button (click)="randomAlien()">Svenska -> Infödda</button>
+    <button (click)="randomNative()">Infödda -> Svenska</button>
 </div>
-<table>
-    <thead>
-    <tr>
-        <th>Предмет</th>
-        <th>Цена</th>
-        <th>Куплено</th>
-    </tr>
-    </thead>
-    <tbody>
-    @for (item of items; track item.purchase) {
-    <tr>
-        <td>{{item.purchase}}</td>
-                    <td>{{item.price}}</td>
-                    <td><input type="checkbox" [(ngModel)]="item.done" /></td>
-                    <td><button (click)="delItem(item.purchase)">Удалить</button></td>
-                </tr>
-    }
-    </tbody>
-</table>
+@if (alien || native) {
+    <div class="top-margin">
+        {{correctAnswers}}: {{incorrectAnswers}}
+    </div>
+    <div class="top-margin">
+        @if (alien) {
+        <div class="block">
+            {{alien}}
+        </div>
+        }
+        @if (native) {
+        <div class="block">
+            {{native}}
+        </div>
+        }
+        <div class="block">
+            <input (keydown.enter)="answerGiven()"[(ngModel)]="answer" />
+        </div>
+        <div class="block" [class.red]="status  ==='incorrect'" [class.green]="status==='correct'">
+            {{status}}
+        </div>
+        @if (status) {
+            <div class="block">
+                {{correctAnswer}}
+            </div>
+        }
+    </div>
+}
+<div>
+    <button (click)="toggleList()" class="top-margin">Toggle list</button>
+</div>
+@if (showList) {
+    <h3>Ordlista</h3>
+    <div class="container">
+        <table>
+            <thead>
+            <tr>
+                <th style="text-align:left">Ord</th>
+                <th style="text-align:left">Översättning</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (item of wordList; track item.alien) {
+            <tr>
+                <td>{{item.alien}}</td>
+                <td>{{item.native}}</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

@@ -1,0 +1,20 @@
+.red {
+    color:red;
+}
+
+.green {
+    color:green;
+}
+
+.top-margin {
+    margin-top: 30px
+}
+.block {
+    display: inline-block;
+    margin-right: 20px
+}
+
+.container {
+    height: 500px;
+    overflow-y: scroll;
+}

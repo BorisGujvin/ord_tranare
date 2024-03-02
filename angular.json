@@ -14,7 +14,10 @@
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.json",
-            "aot": true
+            "aot": true,
+            "assets": [
+              "src/files/swedish.csv"
+            ]
           }
         },
         "serve": {
