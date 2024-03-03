@@ -1,0 +1,28 @@
+<div>
+    <button (click)="toggleList()" class="top-margin">Toggle list</button>
+</div>
+@if (showList) {
+    <h3>Ordlista</h3>
+    Local<button (click)="store()" class="block">save</button>
+    <button (click)="load()" class="block">load</button><br/>
+    <button (click)="getFromServer()">Get from server</button><br/>
+    <button (click)="newItem()">New item</button>
+    @if (addingMode) {
+        <input [(ngModel)]="alienOrd" />
+        <input [(ngModel)]="nativeOrd" />
+        <button (click)="saveItem()">Add</button>
+    }
+    <div class="container">
+        <table>
+            <tbody>
+            @for (item of wordList; track item.alien) {
+            <tr>
+                <td>{{item.alien}}</td>
+                <td>{{item.native}}</td>
+                <td><button (click)="deleteItem(item.alien)" style="margin-top: 0">-</button></td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

@@ -24,34 +24,16 @@
         <div class="block" [class.red]="status  ==='incorrect'" [class.green]="status==='correct'">
             {{status}}
         </div>
-        @if (status) {
+        @if (!status && !help) {
+            <button (click)="help = true">Help!</button>
+        }
+        @if (status || help) {
             <div class="block">
                 {{correctAnswer}}
             </div>
         }
     </div>
 }
-<div>
-    <button (click)="toggleList()" class="top-margin">Toggle list</button>
+<div class="top-margin">
+    <list-comp  (wordListChanged)="wordListChanged($event)"></list-comp>
 </div>
-@if (showList) {
-    <h3>Ordlista</h3>
-    <div class="container">
-        <table>
-            <thead>
-            <tr>
-                <th style="text-align:left">Ord</th>
-                <th style="text-align:left">Översättning</th>
-            </tr>
-            </thead>
-            <tbody>
-            @for (item of wordList; track item.alien) {
-            <tr>
-                <td>{{item.alien}}</td>
-                <td>{{item.native}}</td>
-            </tr>
-            }
-            </tbody>
-        </table>
-    </div>
-}
