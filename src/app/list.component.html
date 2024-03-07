@@ -2,7 +2,7 @@
     <button (click)="toggleList()" class="top-margin">Toggle list</button>
 </div>
 @if (showList) {
-    <h3>Ordlista</h3>
+    <h3>Ordlista ({{wordList.length}})</h3>
     Local<button (click)="store()" class="block">save</button>
     <button (click)="load()" class="block">load</button><br/>
     <button (click)="getFromServer()">Get from server</button><br/>

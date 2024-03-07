@@ -19,13 +19,17 @@
         </div>
         }
         <div class="block">
-            <input (keydown.enter)="answerGiven()"[(ngModel)]="answer" />
+            <input
+                id="answerInput"
+                (keydown.enter)="answerGiven()"
+                [(ngModel)]="answer"
+            />
         </div>
         <div class="block" [class.red]="status  ==='incorrect'" [class.green]="status==='correct'">
             {{status}}
         </div>
         @if (!status && !help) {
-            <button (click)="help = true">Help!</button>
+            <button (click)="helpFunction()">Help!</button>
         }
         @if (status || help) {
             <div class="block">

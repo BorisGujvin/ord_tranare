@@ -66,4 +66,8 @@ export class AppComponent {
             }
         }, this.status === 'correct' ? 1000 : 5000)
     }
+    helpFunction() {
+        this.help = true;
+        document.getElementById('answerInput').focus();
+    }
 }
